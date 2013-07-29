@@ -1,0 +1,42 @@
+body {
+    background-color: white;
+    color: black;
+    font-family: sans-serif; }
+
+a {
+    color: black;
+    text-decoration: none; }
+
+a.ul {
+    text-decoration: underline; }
+
+span.adresse {
+    font-size: 1.8em; }
+
+span.datum {
+    font-size: 1.0em;
+    text-align: center; }
+
+span.title {
+    font-size: 3.2em;
+    font-weight: bold; }
+
+span.location {
+    font-size: 2.2em;
+    font-weight: bold; }
+
+span.zeit {
+    font-size: 3.2em;
+    font-weight: bold; }
+
+table {
+    width: 100%; }
+
+td {
+    padding: 10px; }
+
+tr.odd {
+    background-color: white; }
+
+tr.even {
+    background-color: #B6B6B4; }
