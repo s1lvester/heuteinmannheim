@@ -30,7 +30,7 @@ class Event:
         self.data["uhrzeit"] = uhrzeit  # uhrzeit = german time
         self.data["event_url"] = url
 
-        logging.info(" Found Event: " + str(self.data["title"]) + " at " + str(self.data["name"]))
+        #logging.info(" Found Event: " + str(self.data["title"]) + " at " + str(self.data["name"]))
 
     def get(self, param):
         return self.data[param]
@@ -51,6 +51,7 @@ class EventVault:
         e_subset = []
         for e in self.events:
             if e.get("datetime").date() == date:
+                logging.info("TODAY: " + e.get("title"))
                 e_subset.append(e)
 
         if len(e_subset) > 0:

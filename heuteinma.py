@@ -36,6 +36,8 @@ class HeuteInMannheim:
         self.state_output = self.make_html()
         self.write_html()  # Make initial index.html
 
+        logging.info("Total amount of Events: " + str(len(self.vault.get_all_events())))
+
         #self.loop()  # Currently not used, since I use Cronjobs
 
     def loop(self):
@@ -61,21 +63,11 @@ class HeuteInMannheim:
         <head>
             <title>Heute in Mannheim</title>
             <link href="style.css" media="all" rel="stylesheet" type="text/css">
-            <link rel="stylesheet" href="gh-fork-ribbon.css" />
-            <!--[if IE]>
-                <link rel="stylesheet" href="gh-fork-ribbon.ie.css" />
-            <![endif]-->
             <meta http-equiv="content-type" content="text/html; charset=utf-8">
             <meta name="description" content="Heute in Mannheim ist eine simple Seite, die Events in Mannheim anzeigt. Unabhängig, werbefrei, free as in beer.">
             <meta name="apple-mobile-web-app-capable" content="yes">
         </head>
         <body>
-        <!-- For me on github in CSS from: https://github.com/simonwhitaker/github-fork-ribbon-css -->
-        <div class=\"github-fork-ribbon-wrapper right\">
-            <div class=\"github-fork-ribbon\">
-                <a href=\"https://github.com/s1lvester/heuteinmannheim\">Fork me on GitHub</a>
-            </div>
-        </div>
         <table>\n"""
 
         if len(self.events) == 0:  # Guess we're staying home tonight...
@@ -96,7 +88,7 @@ class HeuteInMannheim:
                     output_fb = ""
 
                 output += """
-                             <td><p><span class=\"title\"><a href=\"{}\">{}  {}</a></span></p>
+                             <td><p><span class=\"title\"><a href=\"{}\">{} {}</a></span></p>
                              <span class=\"location\"><a href=\"{}\">{}</a></span><br>
                              <span class=\"adresse\">{} {} | {} {}</span></td>
                              <td><span class=\"zeit\">{}</span><br>
@@ -114,12 +106,11 @@ class HeuteInMannheim:
         output += """
         </table>
         <hr>
-        <p><b>Heute in Mannheim</b> ist eine automatisch generierte Website und wurde nach bestem Wissen und
+        <p><b><a href=\"imprint.html\">Contact, Impressum und Datenschutz</a></b></p>
+        <p class=\"footer\">Heute in Mannheim ist eine automatisch generierte Website und wurde nach bestem Wissen und
             Gewissen erstellt. Die Einträge wurden nicht redaktionell bearbeitet und ich übernehme keinerlei
             Haftung für die Inhalte hinter den links. Viel Spaß.</p>
-        <hr>
-        <b><a class=\"ul\" href=imprint.html>Contact, Impressum und Datenschutz</a></b>
-        <p>Danke an die Jungs von <a class=\"ul\" href=\"http://heuteinstuttgart.de/\">heuteinstuttgart.de</a></p>
+        <p class=\"footer\"><a href=\"https://github.com/s1lvester/heuteinmannheim\">Fork me on GitHub</a><br>Danke an die Jungs von <a href=\"http://heuteinstuttgart.de/\">heuteinstuttgart.de</a></p>
         </body>
         </html>"""
 

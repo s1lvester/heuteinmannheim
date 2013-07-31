@@ -10,6 +10,10 @@ a {
 a.ul {
     text-decoration: underline; }
 
+p.footer {
+    color: #B6B6B4;
+    font-size: 0.9em; }
+
 span.adresse {
     font-size: 1.8em; }
 

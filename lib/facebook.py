@@ -15,8 +15,8 @@ class FacebookGraph:
         super(FacebookGraph, self).__init__()
         # Get Access Token
         r = requests.get('https://graph.facebook.com/oauth/access_token',
-                         params={"client_id": "",
-                                 "client_secret": "",
+                         params={"client_id": "144297479103508",
+                                 "client_secret": "7c7f47668b09708e8505171fcfc37ae0",
                                  "grant_type": "client_credentials"})
         self.access_token = r.text.split('=')[1]
 
@@ -82,7 +82,7 @@ class FacebookScraper:
 
     def scrape(self, db_id, fb_site, location=False):
 
-        res_data = self.graph.get(fb_site + "/events")
+        res_data = self.graph.get(fb_site + "/events?limit=5000")
 
         for fb_event in res_data["data"]:  # Print the res_data to see why...
             # Some pages require a specific location because they publish events for several
