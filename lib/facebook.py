@@ -15,8 +15,8 @@ class FacebookGraph:
         super(FacebookGraph, self).__init__()
         # Get Access Token
         r = requests.get('https://graph.facebook.com/oauth/access_token',
-                         params={"client_id": "144297479103508",
-                                 "client_secret": "7c7f47668b09708e8505171fcfc37ae0",
+                         params={"client_id": "",
+                                 "client_secret": "",
                                  "grant_type": "client_credentials"})
         self.access_token = r.text.split('=')[1]
 
