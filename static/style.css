@@ -12,7 +12,7 @@ a.ul {
 
 p.footer {
     color: #B6B6B4;
-    font-size: 0.9em; }
+    font-size: 1.0em; }
 
 span.adresse {
     font-size: 1.8em; }
@@ -33,14 +33,23 @@ span.zeit {
     font-size: 3.2em;
     font-weight: bold; }
 
-table {
-    width: 100%; }
-
 td {
     padding: 10px; }
+
+td.open {
+    background-color: #81F7BE; }
+
+td.closed {
+    background-color: ##F5A9A9; }
+
+td.no_data {
+    background-color: #B6B6B4; }
 
 tr.odd {
     background-color: white; }
 
 tr.even {
     background-color: #B6B6B4; }
+
+tr.beach {
+    text-align: center; }

@@ -39,7 +39,7 @@ class FacebookScraper:
                 [9, "nelsonjungbuschbar"],
                 [10, "peer23"],
                 [11, "sohomannheim"],
-                [12, "oegcitybeach", "OEG CITYBEACH"],
+                [13, "oegcitybeach", "OEG CITYBEACH"],
                 [14, "playadelma"],
                 [15, "BlauJungbusch"],
                 [16, "daszimmer"],
