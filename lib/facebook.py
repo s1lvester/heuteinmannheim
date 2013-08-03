@@ -46,7 +46,7 @@ class FacebookScraper:
                 [17, "genesismannheim"],
                 [18, "koiclubmannheim"],
                 [19, "MSConnexion"],
-                [20, "cluboc"],
+                # [20, "cluboc"],  # Club Orange.
                 [21, "clubritzz"],
                 [22, "batonrouge.mannheim"],
                 [23, "The-Suite"],
