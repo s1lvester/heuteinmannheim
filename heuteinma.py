@@ -7,7 +7,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "lib"))
 import facebook
 import websites
 import feeds
-import beachstatus
+#import beachstatus
 from event import EventVault
 import logging
 import datetime
@@ -17,7 +17,7 @@ import locale
 locale.setlocale(locale.LC_TIME, '')  # locale for date, time an the infamous german "Umalaute"
 
 LOG_FILENAME = os.path.join(os.path.dirname(__file__), 'log.log')
-logging.basicConfig(filename=LOG_FILENAME, level=logging.INFO)
+logging.basicConfig(filename=LOG_FILENAME, level=logging.ERROR)
 
 
 class HeuteInMannheim:
@@ -34,8 +34,8 @@ class HeuteInMannheim:
         self.events = self.vault.get_events_for_date(datetime.date.today())
         #self.events = self.vault.get_all_events()  # Only for testing/debugging
 
-        self.beach_status = beachstatus.BeachStatus()
-        self.beach_status = self.beach_status.get_status()
+#        self.beach_status = beachstatus.BeachStatus()
+#        self.beach_status = self.beach_status.get_status()
 
         self.state_output = self.make_html()
         self.write_html()  # Make initial index.html
@@ -70,6 +70,20 @@ class HeuteInMannheim:
             <meta http-equiv="content-type" content="text/html; charset=utf-8">
             <meta name="description" content="Heute in Mannheim ist eine simple Website, die dir Events in Mannheim anzeigt. Unabhängig, werbefrei, unkommerziell, free as in freedom and free as in beer.">
             <meta name="apple-mobile-web-app-capable" content="yes">
+            <!-- Piwik -->
+            <script type="text/javascript">
+              var _paq = _paq || [];
+              _paq.push(["trackPageView"]);
+              _paq.push(["enableLinkTracking"]);
+              (function() {
+                var u=(("https:" == document.location.protocol) ? "https" : "http") + "://hosted-oswa.org/piwik/";
+                _paq.push(["setTrackerUrl", u+"piwik.php"]);
+                _paq.push(["setSiteId", "23"]);
+                var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+                g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+              })();
+            </script>
+            <!-- End Piwik Code -->
         </head>
         <body>
         <table>\n"""
@@ -107,31 +121,31 @@ class HeuteInMannheim:
                                                event.get("ort"),
                                                event.get("uhrzeit"))
 
-        output += """
-        </table>
-        <hr>
-        <p><b>Status der Mannheimer Strände:</b></p>
-        <table>"""
-        for beach in self.beach_status:
-            hours = ""
-            if beach["status"] == "open":
-                hours = str("<b>" + beach["hours_open"] + " - " + beach["hours_closed"] + "</b><br>")
-            output += """
-            <tr class=\"beach\">
-            <td class=\"{}\">
-                <span class=\"adresse"><a href=\"{}\">{}: {}</a></span><br>
-                {}
-                {} {} | {} {}
-            </td>
-            </tr>""".format(beach["status"],
-                            beach["event_obj"].get("url"),
-                            beach["event_obj"].get("name"),
-                            beach["status"],
-                            hours,
-                            beach["event_obj"].get("strasse"),
-                            beach["event_obj"].get("hausnr"),
-                            beach["event_obj"].get("plz"),
-                            beach["event_obj"].get("ort"))
+#        output += """
+#        </table>
+#        <hr>
+#        <p><b>Status der Mannheimer Strände:</b></p>
+#        <table>"""
+#        for beach in self.beach_status:
+#            hours = ""
+#            if beach["status"] == "open":
+#                hours = str("<b>" + beach["hours_open"] + " - " + beach["hours_closed"] + "</b><br>")
+#            output += """
+#            <tr class=\"beach\">
+#            <td class=\"{}\">
+#                <span class=\"adresse"><a href=\"{}\">{}: {}</a></span><br>
+#                {}
+#                {} {} | {} {}
+#            </td>
+#            </tr>""".format(beach["status"],
+#                            beach["event_obj"].get("url"),
+#                            beach["event_obj"].get("name"),
+#                            beach["status"],
+#                            hours,
+#                            beach["event_obj"].get("strasse"),
+#                            beach["event_obj"].get("hausnr"),
+#                            beach["event_obj"].get("plz"),
+#                            beach["event_obj"].get("ort"))
         output += """
         </table>
         <hr>
