@@ -53,35 +53,18 @@ class WebsiteScraper:
                           str("http://saparena.de" + content_block.find("a", attrs={"itemprop": "url"})["href"]))
                 self.vault.add(e)
 
-        # Strandbad-Mannheim.com
-        soup = self.make_soup("http://strandbad-mannheim.com/events.html")
-        if soup:
-            content = soup.find("div", attrs={"id": "object_text___id___1"})
-            strings = content.find_all("strong")
-            for string in strings:
-                if string.text.find(datetime.date.today().strftime("%Y")) > -1:  # if 2013 is contained in String
-                    dtstr = string.text
-                    pos = dtstr.find(datetime.date.today().strftime("%Y")) + 4  # Get Stringposition after 2013
-                    datum = datetime.datetime.strptime(dtstr[0:pos], "%A, den %d. %B %Y")
-                    title = dtstr[pos:].strip()
-                    e = Event(40,
-                              title,
-                              datum,
-                              "http://strandbad-mannheim.com/events.html")
-                    self.vault.add(e)
-
-        # ZeitraumExit.de
-        soup = self.make_soup("http://www.zeitraumexit.de/programm/uebersicht")
-        if soup:  # URL ist 200 OK
-            rows = soup.find_all("tr")
-            if len(rows) < 1:
-                logging.error("Cannot scrape zeitraumexit.de")
-            for row in rows:
-                datum = row.find('td', attrs={'class': 'date'}).text + " " + row.find('td', attrs={'class': 'time'}).text
-                datum = dparser.parse(datum, dayfirst=True, fuzzy=True)
-                link = row.find('td', attrs={'class': 'title'}).find('a', href=True)
-                e = Event(3,
-                          row.find('td', attrs={'class': 'title'}).a.contents[0],
-                          datum,
-                          "http://www.zeitraumexit.de" + link["href"])
-                self.vault.add(e)
+        ## ZeitraumExit.de
+        #soup = self.make_soup("http://www.zeitraumexit.de/programm/uebersicht")
+        #if soup:  # URL ist 200 OK
+            #rows = soup.find_all("tr")
+            #if len(rows) < 1:
+                #logging.error("Cannot scrape zeitraumexit.de")
+            #for row in rows:
+                #datum = row.find('td', attrs={'class': 'date'}).text + " " + row.find('td', attrs={'class': 'time'}).text
+                #datum = dparser.parse(datum, dayfirst=True, fuzzy=True)
+                #link = row.find('td', attrs={'class': 'title'}).find('a', href=True)
+                #e = Event(3,
+                          #row.find('td', attrs={'class': 'title'}).a.contents[0],
+                          #datum,
+                          #"http://www.zeitraumexit.de" + link["href"])
+                #self.vault.add(e)

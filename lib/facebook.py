@@ -15,8 +15,8 @@ class FacebookGraph:
         super(FacebookGraph, self).__init__()
         # Get Access Token
         r = requests.get('https://graph.facebook.com/oauth/access_token',
-                         params={"client_id": "",
-                                 "client_secret": "",
+                         params={"client_id": "144297479103508",
+                                 "client_secret": "0f9a45a4ca8bf9f78ff490178607d1b8",
                                  "grant_type": "client_credentials"})
         self.access_token = r.text.split('=')[1]
 
@@ -34,9 +34,9 @@ class FacebookScraper:
     fb_sites = [[4, "loftclubludwigshafen", "Loft Club"],  # Some Sites need Specific Locations
                 [5, "hafen49", "Hafen 49"],
                 [6, "dieKuecheMannheim"],
-                [7, "discozwei"],
-                [8, "hagestolzbar"],
-                [9, "nelsonjungbuschbar"],
+                #[7, "discozwei"],  # Defekt
+                #[8, "hagestolzbar"],  # Defekt
+                #[9, "nelsonjungbuschbar"],  # Defekt
                 [10, "peer23"],
                 [11, "sohomannheim"],
                 [13, "oegcitybeach", "OEG CITYBEACH"],
@@ -46,9 +46,9 @@ class FacebookScraper:
                 [17, "genesismannheim"],
                 [18, "koiclubmannheim"],
                 [19, "MSConnexion"],
-                # [20, "cluboc"],  # Club Orange.
+                [20, "cluboc"],  # Club Orange
                 [21, "clubritzz"],
-                [22, "batonrouge.mannheim"],
+                #[22, "batonrouge.mannheim"],  # Defekt
                 [23, "The-Suite"],
                 [26, "ZumTeufel"],
                 [27, "Filmriss.bar"],
@@ -56,7 +56,7 @@ class FacebookScraper:
                 [31, "AlteSeilerei"],
                 [32, "Bootshaus"],
                 [33, "bockmannheim"],
-                # The following are "old" Facebook pages which only provide an ID
+                ## The following are "old" Facebook pages which only provide an ID
                 [24, "114510748568298"],  # JUZ Mannheim
                 [28, "167521296599554"],  # O-Ton
                 [29, "108785689188333"],  # Contra-N
@@ -65,7 +65,14 @@ class FacebookScraper:
                 [36, "152321714945335"],  # Quartiermanagement Neckarstadt-West
                 [37, "NORD.Coffee.Wine.Bar"],
                 [38, "zwischenraumma"],
-                [39, "Fitzgeralds.Irish.Pub"]
+                [39, "Fitzgeralds.Irish.Pub"],
+                [41, "ManufakturMannheim"],
+                [42, "nummer6jungbusch"],
+                [43, "OnkelOttoBar"],
+                [44, "moustache.mannheim"],
+                [45, "bow.jungbuschbar"],
+                #[46, "KietsKoenig"],  # Defekt
+                [47, "122208301163401"]  # Strümpfe
                 ]
 
     def __init__(self, vault):
@@ -83,6 +90,7 @@ class FacebookScraper:
     def scrape(self, db_id, fb_site, location=False):
 
         res_data = self.graph.get(fb_site + "/events?limit=5000")
+        #print(fb_site, res_data)
 
         for fb_event in res_data["data"]:  # Print the res_data to see why...
             # Some pages require a specific location because they publish events for several
