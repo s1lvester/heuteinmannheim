@@ -2,6 +2,8 @@
 import requests
 import dateutil.parser as dparser
 import logging
+import configparser
+import os
 from event import Event
 
 
@@ -14,9 +16,11 @@ class FacebookGraph:
     def __init__(self):
         super(FacebookGraph, self).__init__()
         # Get Access Token
+        config = configparser.SafeConfigParser()
+        config.read(os.path.dirname(__file__) + "/config.ini")
         r = requests.get('https://graph.facebook.com/oauth/access_token',
-                         params={"client_id": "144297479103508",
-                                 "client_secret": "0f9a45a4ca8bf9f78ff490178607d1b8",
+                         params={"client_id": config["facebook"]["client_id"],
+                                 "client_secret": config["facebook"]["client_secret"],
                                  "grant_type": "client_credentials"})
         self.access_token = r.text.split('=')[1]
 

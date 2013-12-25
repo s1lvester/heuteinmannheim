@@ -40,3 +40,4 @@ __pycache__
 watchandupdate.py
 gh-publish.sh
 *.html
+lib/config.ini
