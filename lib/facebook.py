@@ -4,6 +4,7 @@ import dateutil.parser as dparser
 import logging
 import configparser
 import os
+import traceback
 from event import Event
 
 
@@ -29,7 +30,6 @@ class FacebookGraph:
         r = requests.get(url, params={"access_token": self.access_token})
         logging.debug("Facebook-URL:" + r.url)
         return r.json()
-
 
 class FacebookScraper:
     """Scraper for Facebook events using the graph API"""
@@ -60,7 +60,7 @@ class FacebookScraper:
                 [31, "AlteSeilerei"],
                 [32, "Bootshaus"],
                 [33, "bockmannheim"],
-                ## The following are "old" Facebook pages which only provide an ID
+                ## The following are some kind of "old" Facebook pages which only provide an ID
                 [24, "114510748568298"],  # JUZ Mannheim
                 [28, "167521296599554"],  # O-Ton
                 [29, "108785689188333"],  # Contra-N
@@ -81,8 +81,12 @@ class FacebookScraper:
 
     def __init__(self, vault):
         self.vault = vault
-        self.graph = FacebookGraph()
-        self.go()
+        try:
+            self.graph = FacebookGraph()
+        except:
+            logging.error("Error getting Facebook Access Token: %s" % traceback.format_exc())
+        else:
+            self.go()
 
     def go(self):
         for site in self.fb_sites:
@@ -93,16 +97,20 @@ class FacebookScraper:
 
     def scrape(self, db_id, fb_site, location=False):
 
-        res_data = self.graph.get(fb_site + "/events?limit=5000")
-        #print(fb_site, res_data)
+        try:
+            res_data = self.graph.get(fb_site + "/events?limit=5000")
+            #print(fb_site, res_data)
 
-        for fb_event in res_data["data"]:  # Print the res_data to see why...
-            # Some pages require a specific location because they publish events for several
-            # "affilliated" locations for which the adress data in the sqlite db doesn't match
-            if not location or (location and fb_event["location"] == location):
-                datum = dparser.parse(fb_event["start_time"], fuzzy=True)  # dparser: so simple...
-                e = Event(db_id,
-                          fb_event["name"],
-                          datum,
-                          "https://www.facebook.com/events/" + fb_event["id"])
-                self.vault.add(e)
+            for fb_event in res_data["data"]:  # Print the res_data to see why...
+                # Some pages require a specific location because they publish events for several
+                # "affilliated" locations for which the adress data in the sqlite db doesn't match
+                if not location or (location and fb_event["location"] == location):
+                    datum = dparser.parse(fb_event["start_time"], fuzzy=True)  # dparser: so simple...
+                    e = Event(db_id,
+                              fb_event["name"],
+                              datum,
+                              "https://www.facebook.com/events/" + fb_event["id"])
+                    self.vault.add(e)
+
+        except:
+            logging.error("Can't scrape Facebook Page for %s: %s" % (fb_site, traceback.format_exc()))

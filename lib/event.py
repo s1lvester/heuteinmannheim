@@ -11,9 +11,13 @@ class Event:
         self.data = dict()
 
         # Get Information for this event from the sqlite DB
-        conn = sqlite3.connect(os.path.join(os.path.dirname(__file__), "../locations.sqlite"))
-        conn.row_factory = sqlite3.Row
-        c = conn.cursor()
+        try:
+            conn = sqlite3.connect(os.path.join(os.path.dirname(__file__), "../locations.sqlite"))
+            conn.row_factory = sqlite3.Row
+            c = conn.cursor()
+        except:
+            logging.error("Cant connect to database!")
+
         c.execute('select * from locations where id=?', [db_id])
         r = c.fetchone()
 
@@ -51,7 +55,7 @@ class EventVault:
         e_subset = []
         for e in self.events:
             if e.get("datetime").date() == date:
-                logging.info("TODAY: " + e.get("title"))
+                logging.info("&s: %s" % (date, e.get("title")))
                 e_subset.append(e)
 
         if len(e_subset) > 0:

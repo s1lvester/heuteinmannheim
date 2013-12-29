@@ -36,7 +36,6 @@ nosetests.xml
 __pycache__
 *.log
 *.pyc
-
 watchandupdate.py
 gh-publish.sh
 *.html

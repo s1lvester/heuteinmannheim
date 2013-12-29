@@ -88,7 +88,7 @@ class HeuteInMannheim:
         <body>
         <table>\n"""
 
-        if len(self.events) == 0:  # Guess we're staying home tonight...
+        if not self.events:  # Guess we're staying home tonight...
             output += "<tr><td><p><span class=\"title\">Heute keine Events.<br> Guess we're staying home tonight... :-(</span></p></td></tr>\n"
         else:
             eo = 0  # Even/Odd table-rows
