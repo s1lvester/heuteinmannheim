@@ -55,7 +55,7 @@ class EventVault:
         e_subset = []
         for e in self.events:
             if e.get("datetime").date() == date:
-                logging.info("&s: %s" % (date, e.get("title")))
+                logging.info("%s: %s" % (date, e.get("title")))
                 e_subset.append(e)
 
         if len(e_subset) > 0:
