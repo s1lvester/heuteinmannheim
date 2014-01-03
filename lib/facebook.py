@@ -76,7 +76,8 @@ class FacebookScraper:
                 [44, "moustache.mannheim"],
                 [45, "bow.jungbuschbar"],
                 #[46, "KietsKoenig"],  # Defekt
-                [47, "122208301163401"]  # Strümpfe
+                [47, "122208301163401"],  # Strümpfe
+                [48, "1419601418270699"]  # Diesel Club
                 ]
 
     def __init__(self, vault):
