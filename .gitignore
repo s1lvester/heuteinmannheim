@@ -40,3 +40,4 @@ watchandupdate.py
 gh-publish.sh
 *.html
 lib/config.ini
+static/piwik.js

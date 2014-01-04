@@ -70,20 +70,7 @@ class HeuteInMannheim:
             <meta http-equiv="content-type" content="text/html; charset=utf-8">
             <meta name="description" content="Heute in Mannheim ist eine simple Website, die dir Events in Mannheim anzeigt. Unabhängig, werbefrei, unkommerziell, free as in freedom and free as in beer.">
             <meta name="apple-mobile-web-app-capable" content="yes">
-            <!-- Piwik -->
-            <script type="text/javascript">
-              var _paq = _paq || [];
-              _paq.push(["trackPageView"]);
-              _paq.push(["enableLinkTracking"]);
-              (function() {
-                var u=(("https:" == document.location.protocol) ? "https" : "http") + "://hosted-oswa.org/piwik/";
-                _paq.push(["setTrackerUrl", u+"piwik.php"]);
-                _paq.push(["setSiteId", "23"]);
-                var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
-                g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
-              })();
-            </script>
-            <!-- End Piwik Code -->
+            <script type="text/javascript" src="piwik.js"></script>
         </head>
         <body>
         <table>\n"""
