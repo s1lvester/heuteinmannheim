@@ -20,10 +20,16 @@ class BeachStatus:
             status_neckarstrand = {}
             soup = WebsiteScraper.make_soup(self=None, url="http://www.neckarstrand-mannheim.de/")
             soup = soup.find("h2", attrs={"align": "right"})
-            if soup.text.find("Geöffnet") > -1:  # open
-                status_neckarstrand["status"] = "open"
-            else:
-                status_neckarstrand["status"] = "no_data"
+            # ###Status is not reliable.
+            # ###Website says open but it's clearly closed...
+            # orginal code:
+            #if soup.text.find("Geöffnet") > -1:  # open
+                #status_neckarstrand["status"] = "open"
+            #else:
+                #status_neckarstrand["status"] = "no_data"
+            # ### temp. fix:
+            status_neckarstrand["status"] = "no_data"
+            # ### end temp. fix
             status_neckarstrand["hours_open"] = "12:00"
             status_neckarstrand["hours_closed"] = "24:00"
             status_neckarstrand["event_obj"] = Event(35, "BeachStatus", datetime.date.today(), "")
@@ -37,8 +43,11 @@ class BeachStatus:
         try:
             status_oeg = {}
             r = requests.get("http://oeg-citybeach.de/open/")
+            logging.error(r.text)
             if r.text.find("xmp.did:12D3ABFA7F4111E2A395BC8F330BA798") > -1:  # open
                 status_oeg["status"] = "open"
+            elif r.text.find("xmp.did:0880117407206811822ACEA8F488BC6D") > -1:  # closed
+                status_oeg["status"] = "closed"
             else:  # No info...
                 status_oeg["status"] = "no_data"
             status_oeg["event_obj"] = Event(13, "BeachStatus", datetime.date.today(), "")  # Create an event to gather Info from DB
@@ -60,6 +69,8 @@ class BeachStatus:
             r = requests.get("http://www.playadelma.de/rss.php")
             if r.text.find("OPEN") > -1:
                 status_playadelma["status"] = "open"
+            elif r.text.find("CLOSED") > -1:
+                status_playadelma["status"] = "closed"
             else:
                 status_playadelma["status"] = "no_data"
             # Hours:
