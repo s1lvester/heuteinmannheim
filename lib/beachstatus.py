@@ -43,7 +43,6 @@ class BeachStatus:
         try:
             status_oeg = {}
             r = requests.get("http://oeg-citybeach.de/open/")
-            logging.error(r.text)
             if r.text.find("xmp.did:12D3ABFA7F4111E2A395BC8F330BA798") > -1:  # open
                 status_oeg["status"] = "open"
             elif r.text.find("xmp.did:0880117407206811822ACEA8F488BC6D") > -1:  # closed
