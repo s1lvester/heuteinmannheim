@@ -42,24 +42,6 @@ class HeuteInMannheim:
 
         logging.info("Total amount of Events: " + str(len(self.vault.get_all_events())))
 
-        #self.loop()  # Currently not used, since I use Cronjobs
-
-    def loop(self):
-        """Function to implement a main-loop.
-        Repopulates self.events and regenerates self.state_output if it differs."""
-        while True:
-            time.sleep(3600)
-            logging.info("Getting new Events...")
-            self.facebook_scraper.go()
-            self.website_scraper.go()
-            self.feed_scraper.go()
-            self.events = self.vault.get_events_for_date(datetime.date.today())
-            newstate_output = self.make_html()
-            if self.state_output == newstate_output:
-                logging.info("New state! --> new HTML!")
-                self.state_output = newstate_output
-                self.write_html()
-
     def make_html(self):
         """Generate HTML output from collected events"""
         output = """<!DOCTYPE html>
