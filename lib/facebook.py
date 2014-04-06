@@ -31,6 +31,7 @@ class FacebookGraph:
         logging.debug("Facebook-URL:" + r.url)
         return r.json()
 
+
 class FacebookScraper:
     """Scraper for Facebook events using the graph API"""
     graph = str()

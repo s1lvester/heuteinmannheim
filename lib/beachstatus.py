@@ -20,16 +20,11 @@ class BeachStatus:
             status_neckarstrand = {}
             soup = WebsiteScraper.make_soup(self=None, url="http://www.neckarstrand-mannheim.de/")
             soup = soup.find("h2", attrs={"align": "right"})
-            # ###Status is not reliable.
-            # ###Website says open but it's clearly closed...
-            # orginal code:
-            #if soup.text.find("Geöffnet") > -1:  # open
-                #status_neckarstrand["status"] = "open"
-            #else:
-                #status_neckarstrand["status"] = "no_data"
-            # ### temp. fix:
-            status_neckarstrand["status"] = "no_data"
-            # ### end temp. fix
+             ###Status is not reliable.
+            if soup.text.find("Geöffnet") > -1:  # open
+                status_neckarstrand["status"] = "open"
+            else:
+                status_neckarstrand["status"] = "no_data"
             status_neckarstrand["hours_open"] = "12:00"
             status_neckarstrand["hours_closed"] = "24:00"
             status_neckarstrand["event_obj"] = Event(35, "BeachStatus", datetime.date.today(), "")

@@ -12,29 +12,32 @@ a.ul {
 
 p.footer {
     color: #B6B6B4;
-    font-size: 1.0em; }
+    font-size: 100%; }
 
 span.adresse {
-    font-size: 1.8em; }
+    font-size: 100%; }
 
 span.datum {
-    font-size: 1.0em;
+    font-size: 150%;
     text-align: center; }
 
 span.title {
-    font-size: 3.2em;
+    font-size: 150%;
     font-weight: bold; }
 
 span.location {
-    font-size: 2.2em;
+    font-size: 100%;
     font-weight: bold; }
 
 span.zeit {
-    font-size: 3.2em;
+    font-size: 150%;
     font-weight: bold; }
 
+table {
+    max-width: 90%; }
+
 td {
-    padding: 10px; }
+    padding: 5px; }
 
 td.open {
     background-color: #81F7BE; }
