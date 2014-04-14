@@ -23,6 +23,8 @@ class BeachStatus:
              ###Status is not reliable.
             if soup.text.find("Geöffnet") > -1:  # open
                 status_neckarstrand["status"] = "open"
+            elif soup.text.find("Geschlossen") > -1:  # closed
+                status_neckarstrand["status"] = "closed"
             else:
                 status_neckarstrand["status"] = "no_data"
             status_neckarstrand["hours_open"] = "12:00"
