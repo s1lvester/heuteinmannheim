@@ -39,9 +39,9 @@ class FacebookScraper:
     fb_sites = [[4, "loftclubludwigshafen", "Loft Club"],  # Some Sites need Specific Locations
                 [5, "hafen49", "Hafen 49"],
                 [6, "dieKuecheMannheim"],
-                #[7, "discozwei"],  # Defekt
-                #[8, "hagestolzbar"],  # Defekt
-                #[9, "nelsonjungbuschbar"],  # Defekt
+                [7, "discozwei"],
+                [8, "hagestolzbar"],
+                [9, "nelsonjungbuschbar"],
                 [10, "peer23"],
                 [11, "sohomannheim"],
                 [13, "oegcitybeach", "OEG CITYBEACH"],
@@ -53,7 +53,7 @@ class FacebookScraper:
                 [19, "MSConnexion"],
                 [20, "cluboc"],  # Club Orange
                 [21, "clubritzz"],
-                #[22, "batonrouge.mannheim"],  # Defekt
+                [22, "batonrouge.mannheim"],
                 [23, "The-Suite"],
                 [26, "ZumTeufel"],
                 [27, "Filmriss.bar"],
@@ -76,9 +76,11 @@ class FacebookScraper:
                 [43, "OnkelOttoBar"],
                 [44, "moustache.mannheim"],
                 [45, "bow.jungbuschbar"],
-                #[46, "KietsKoenig"],  # Defekt
+                [46, "KietsKoenig"],
                 [47, "122208301163401"],  # Strümpfe
-                [48, "1419601418270699"]  # Diesel Club
+                [48, "1419601418270699"],  # Diesel Club
+                [49, "7erClubMannheim"],
+                [50, "Bootshaus"]
                 ]
 
     def __init__(self, vault):
