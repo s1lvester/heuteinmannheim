@@ -38,6 +38,6 @@ __pycache__
 *.pyc
 watchandupdate.py
 gh-publish.sh
-*.html
+index.html
 lib/config.ini
 static/piwik.js

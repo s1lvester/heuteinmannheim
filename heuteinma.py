@@ -52,7 +52,6 @@ class HeuteInMannheim:
             <meta http-equiv="content-type" content="text/html; charset=utf-8">
             <meta name="description" content="Heute in Mannheim ist eine simple Website, die dir Events in Mannheim anzeigt. Unabhängig, werbefrei, unkommerziell, free as in freedom and free as in beer.">
             <meta name="apple-mobile-web-app-capable" content="yes">
-            <script type="text/javascript" src="piwik.js"></script>
         </head>
         <body>
         <table>\n"""
