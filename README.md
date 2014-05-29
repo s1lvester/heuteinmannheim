@@ -5,7 +5,12 @@ Simple webscraping project to gather events in my local town of Mannheim,
 Germany. Heavily inspired by the awesome website http://heuteinstuttgart.de
 
 Written in Python 3 it creates static html to enable low-end or free
-hosting. Accordingly heuteinmannheim.de is hosted right here on github-pages.
+hosting.
+
+Requires:
+- python3-dateutil
+- python3-requests (>= 2.0)
+- python3-feedparser
 
 Licence is MIT
 
