@@ -59,30 +59,4 @@ class BeachStatus:
         except:
             logging.error("Error while beachscraping for OEG City Beach: %s" % traceback.format_exc())
 
-        # Playa del Ma
-        try:
-            status_playadelma = {}
-            r = requests.get("http://www.playadelma.de/rss.php")
-            if r.text.find("OPEN") > -1:
-                status_playadelma["status"] = "open"
-            elif r.text.find("CLOSED") > -1:
-                status_playadelma["status"] = "closed"
-            else:
-                status_playadelma["status"] = "no_data"
-            # Hours:
-            #    Mon - Thu: 15:00 - 01:00
-            #    Fri - Sat: 15:00 - 03:00
-            #    Sun: 15:00 - 00:00
-            status_playadelma["hours_open"] = "15:00"
-            if datetime.date.weekday(datetime.date.today()) == 4 or datetime.date.weekday(datetime.date.today()) == 5:
-                status_playadelma["hours_closed"] = "03:00"
-            elif datetime.date.weekday(datetime.date.today()) == 6:
-                status_playadelma["hours_closed"] = "00:00"
-            else:
-                status_playadelma["hours_closed"] = "01:00"
-            status_playadelma["event_obj"] = Event(14, "BeachStatus", datetime.date.today(), "")
-            self.beaches.append(status_playadelma)
-        except:
-            logging.error("Error while beachscraping for Playa del Ma: %s" % traceback.format_exc())
-
         return self.beaches
