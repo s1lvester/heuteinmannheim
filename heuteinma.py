@@ -7,7 +7,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "lib"))
 import facebook
 import websites
 import feeds
-import beachstatus
+#import beachstatus
 from event import EventVault
 import logging
 import datetime
@@ -91,31 +91,31 @@ class HeuteInMannheim:
 
         output += """
         </table>
-        <hr>
-        <p><b>Status der Mannheimer Strände:</b></p>
-        <table>"""
-        for beach in self.beach_status:
-            hours = ""
-            if beach["status"] == "open":
-                hours = str("<b>" + beach["hours_open"] + " - " + beach["hours_closed"] + "</b><br>")
-            output += """
-            <tr class=\"beach\">
-            <td class=\"{}\">
-                <span class=\"adresse"><a href=\"{}\">{}: {}</a></span><br>
-                {}
-                {} {} | {} {}
-            </td>
-            </tr>""".format(beach["status"],
-                            beach["event_obj"].get("url"),
-                            beach["event_obj"].get("name"),
-                            beach["status"],
-                            hours,
-                            beach["event_obj"].get("strasse"),
-                            beach["event_obj"].get("hausnr"),
-                            beach["event_obj"].get("plz"),
-                            beach["event_obj"].get("ort"))
-        output += """
-        </table>
+#        <hr>
+#        <p><b>Status der Mannheimer Strände:</b></p>
+#        <table>"""
+#        for beach in self.beach_status:
+#            hours = ""
+#            if beach["status"] == "open":
+#                hours = str("<b>" + beach["hours_open"] + " - " + beach["hours_closed"] + "</b><br>")
+#            output += """
+#            <tr class=\"beach\">
+#            <td class=\"{}\">
+#                <span class=\"adresse"><a href=\"{}\">{}: {}</a></span><br>
+#                {}
+#                {} {} | {} {}
+#            </td>
+#            </tr>""".format(beach["status"],
+#                            beach["event_obj"].get("url"),
+#                            beach["event_obj"].get("name"),
+#                            beach["status"],
+#                            hours,
+#                            beach["event_obj"].get("strasse"),
+#                            beach["event_obj"].get("hausnr"),
+#                            beach["event_obj"].get("plz"),
+#                            beach["event_obj"].get("ort"))
+#        output += """
+#        </table>
         <hr>
         <p><b><a href=\"imprint.html\">Contact, Impressum und Datenschutz</a></b></p>
         <p class=\"footer\">Heute in Mannheim ist eine automatisch generierte Website und wurde nach bestem Wissen und Gewissen erstellt. Die Einträge wurden nicht redaktionell bearbeitet und ich übernehme keinerlei Haftung für die Inhalte hinter den links. Viel Spaß.</p>
