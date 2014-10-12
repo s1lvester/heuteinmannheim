@@ -34,8 +34,8 @@ class HeuteInMannheim:
         self.events = self.vault.get_events_for_date(datetime.date.today())
         #self.events = self.vault.get_all_events()  # Only for testing/debugging
 
-        self.beach_status = beachstatus.BeachStatus()
-        self.beach_status = self.beach_status.get_status()
+        #self.beach_status = beachstatus.BeachStatus()
+        #self.beach_status = self.beach_status.get_status()
 
         self.state_output = self.make_html()
         self.write_html()  # Make initial index.html
@@ -89,8 +89,8 @@ class HeuteInMannheim:
                                                event.get("ort"),
                                                event.get("uhrzeit"))
 
-        output += """
-        </table>
+#        output += """
+#        </table>
 #        <hr>
 #        <p><b>Status der Mannheimer Strände:</b></p>
 #        <table>"""
@@ -114,8 +114,8 @@ class HeuteInMannheim:
 #                            beach["event_obj"].get("hausnr"),
 #                            beach["event_obj"].get("plz"),
 #                            beach["event_obj"].get("ort"))
-#        output += """
-#        </table>
+        output += """
+        </table>
         <hr>
         <p><b><a href=\"imprint.html\">Contact, Impressum und Datenschutz</a></b></p>
         <p class=\"footer\">Heute in Mannheim ist eine automatisch generierte Website und wurde nach bestem Wissen und Gewissen erstellt. Die Einträge wurden nicht redaktionell bearbeitet und ich übernehme keinerlei Haftung für die Inhalte hinter den links. Viel Spaß.</p>
