@@ -36,7 +36,8 @@ class FacebookScraper:
     """Scraper for Facebook events using the graph API"""
     graph = str()
     # List of Facebook sites with their ID in the sqlite-DB (in Mannheim)
-    fb_sites = [[4, "loftclubludwigshafen", "Loft Club"],  # Some Sites need Specific Locations
+    fb_sites = [[3, "zeitraumexit"],
+                [4, "loftclubludwigshafen", "Loft Club"],  # Some Sites need Specific Locations
                 [5, "hafen49", "Hafen 49"],
                 [6, "dieKuecheMannheim"],
                 [7, "discozwei"],
