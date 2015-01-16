@@ -43,7 +43,6 @@ class FacebookScraper:
                 [7, "discozwei"],
                 [8, "hagestolzbar"],
                 [9, "nelsonjungbuschbar"],
-                [10, "peer23"],
                 [11, "sohomannheim"],
                 [13, "oegcitybeach", "OEG CITYBEACH"],
                 [14, "playadelma"],
@@ -55,7 +54,7 @@ class FacebookScraper:
                 [20, "cluboc"],  # Club Orange
                 [21, "clubritzz"],
                 [22, "batonrouge.mannheim"],
-                [23, "The-Suite"],
+                [23, "Suite.Mannheim"],
                 [26, "ZumTeufel"],
                 [27, "Filmriss.bar"],
                 [30, "zapatto.mannheim"],
