@@ -81,8 +81,8 @@ class FacebookScraper:
                 [48, "1419601418270699"],  # Diesel Club
                 [49, "7erClubMannheim"],
                 [50, "Bootshaus"],
-                [51, "caferost"]
-
+                [51, "caferost"],
+                [52, "ARTgenossen.Mannheim"]
                 ]
 
     def __init__(self, vault):
