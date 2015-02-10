@@ -41,3 +41,4 @@ gh-publish.sh
 index.html
 lib/config.ini
 static/piwik.js
+output/*

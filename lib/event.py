@@ -34,7 +34,7 @@ class Event:
         self.data["uhrzeit"] = uhrzeit  # uhrzeit = german time
         self.data["event_url"] = url
 
-        #logging.info(" Found Event: " + str(self.data["title"]) + " at " + str(self.data["name"]))
+        logging.info(" Found Event: " + str(self.data["title"]) + " at " + str(self.data["name"]))
 
     def get(self, param):
         return self.data[param]

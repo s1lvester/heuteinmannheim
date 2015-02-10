@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import os
 import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), "lib"))
@@ -57,7 +55,9 @@ class HeuteInMannheim:
         <table>\n"""
 
         if not self.events:  # Guess we're staying home tonight...
-            output += "<tr><td><p><span class=\"title\">Heute keine Events.<br> Guess we're staying home tonight... :-(</span></p></td></tr>\n"
+            output += """<tr><td><p><span class=\"title\">Heute keine
+            Events.<br> Guess we're staying home tonight...
+            :-(</span></p></td></tr>\n"""
         else:
             eo = 0  # Even/Odd table-rows
             for event in self.events:
@@ -117,17 +117,22 @@ class HeuteInMannheim:
         output += """
         </table>
         <hr>
+        <p>Last update: {}</p>
         <p><b><a href=\"imprint.html\">Contact, Impressum und Datenschutz</a></b></p>
-        <p class=\"footer\">Heute in Mannheim ist eine automatisch generierte Website und wurde nach bestem Wissen und Gewissen erstellt. Die Einträge wurden nicht redaktionell bearbeitet und ich übernehme keinerlei Haftung für die Inhalte hinter den links. Viel Spaß.</p>
+        <p class=\"footer\">Heute in Mannheim ist eine automatisch generierte
+        Website und wurde nach bestem Wissen und Gewissen erstellt. Die
+        Einträge wurden nicht redaktionell bearbeitet und ich übernehme
+        keinerlei Haftung für die Inhalte hinter den links</p>
         <p class=\"footer\"><a href=\"https://github.com/s1lvester/heuteinmannheim\">Fork me on GitHub</a><br>Danke an die Jungs von <a href=\"http://heuteinstuttgart.de/\">heuteinstuttgart.de</a></p>
         </body>
-        </html>"""
+        </html>""".format(time.strftime("%d.%m.%Y %H:%M", time.localtime()))
 
-        return output
+        return output.encode("utf-8")
 
     def write_html(self):
         """Write the index.html file. Requires self.state_output to be set"""
-        f = open(os.path.join(os.path.dirname(__file__), "static/index.html"), "w")
+        f = open(os.path.join(os.path.dirname(__file__), "static/index.html"),
+                "wb")
         f.write(self.state_output)
         f.close()
 
