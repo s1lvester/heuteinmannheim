@@ -1,3 +1,8 @@
+Deprication warning
+===============
+
+This project is no longer in use and hasn't been for quite some time. If I had to write it again, I'd propably use django.
+
 Heute in Mannheim
 ===============
 
